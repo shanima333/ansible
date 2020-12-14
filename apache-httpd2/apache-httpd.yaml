@@ -1,0 +1,12 @@
+---
+
+  - name: "Install Webservice on RedHat & Debian hosts"
+    hosts: all
+    become: true
+    tasks:
+
+      - include_tasks: httpd-amazon.yaml
+        when: ansible_os_family == "RedHat"
+
+      - include_tasks: apache2-ubuntu.yaml
+        when: ansible_os_family == "Debian" 

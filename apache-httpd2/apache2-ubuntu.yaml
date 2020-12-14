@@ -1,0 +1,17 @@
+---
+
+ - name: "Debian- Install apache2 service"
+   apt:
+     name: apache2
+     state: present
+
+ - name: "Debian- Copy content to document root"
+   copy:
+     content: "<h1>Debian apach2 webservice</h2>"
+     dest: /var/www/html/index.html
+
+ - name: "Debian- Restart & Enable apache service"
+   service:
+     name: apache2
+     state: restarted
+     enabled: true
